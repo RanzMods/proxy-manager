@@ -158,10 +158,20 @@ curl -fsSL http://IP_VPS_ANDA/install-agent.sh | bash
 5. Script akan secara otomatis:
    - Menginstall paket Python, OpenSSH, Autossh, Curl, Tar.
    - Mengaktifkan **Wake-Lock** agar Termux tidak dimatikan Android saat layar mati.
-   - Melakukan pairing dengan VPS secara aman sesuai mode jaringan yang dipilih.
-   - Menjalankan SOCKS5 Server dan Agent di latar belakang.
-   - Menginstall hook **Termux:Boot** (agar otomatis berjalan kembali saat HP direstart).
-6. Kembali ke Web Dashboard di browser, refresh halaman: Anda akan melihat Agent Android Anda telah berstatus **ONLINE** dengan Public IP terverifikasi!
+   - Melakukan pairing dengan VPS secara aman sesuai mode jaringan yang dipilih (Seluler / WiFi).
+   - **Langsung Aktif di Background**: SOCKS5 Server dan Agent langsung otomatis berjalan tanpa perlu Anda jalankan manual.
+   - **Auto-Restart Watchdog Supervisor (`proxy-supervisor.sh`)**: Pengawas background otomatis aktif untuk memantau proses setiap 4 detik. Jika aplikasi tertutup atau crash karena RAM cleaner Android, supervisor akan **langsung menyalakan kembali proses secara otomatis**.
+   - Menginstall hook **Termux:Boot** (agar otomatis berjalan kembali saat HP direstart / mati lalu dinyalakan kembali).
+
+6. Perintah Manajemen di Termux:
+   - Cek Status Service & Watchdog: `~/status-agent.sh`
+   - Restart Agent: `~/restart-agent.sh`
+   - Stop Agent & Watchdog: `~/stop-agent.sh`
+   - Start Tunnel Relay: `~/start-tunnel.sh IP_VPS 22 root 10001 10001`
+   - Stop Tunnel Relay: `~/stop-tunnel.sh`
+   - Lihat Log Real-time: `tail -f ~/proxy-agent/agent.log`
+
+7. Kembali ke Web Dashboard di browser, refresh halaman: Anda akan melihat Agent Android Anda telah berstatus **ONLINE** dengan Public IP terverifikasi!
 
 ---
 
